@@ -11,7 +11,7 @@ cd qemu &&  git submodule update --init  && git submodule update --init roms/edk
 sed -i 's|https://github.com/Zeex/subhook.git|https://github.com/tianocore/edk2-subhook.git|g' qemu/roms/edk2/.gitmodules
 apt install devscripts -y
 mk-build-deps --install
-meson subprojects download  # 下载子项目
+cd qemu && meson subprojects download && cd ../  # 下载子项目
 make
 make clean
 cp ../sedPatch-pve-qemu-kvm7-8-anti-dection.sh qemu/
