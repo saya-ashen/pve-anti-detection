@@ -18,6 +18,7 @@ cp ../../smbios.c hw/smbios/smbios.c
 cd ..
 apt install devscripts -y
 mk-build-deps --install
+meson subprojects download
 make
 
 <<EOF
