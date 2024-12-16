@@ -7,11 +7,8 @@ df -h
 git clone git://git.proxmox.com/git/pve-qemu.git
 cd pve-qemu
 git reset --hard c4efa30b307fc15df5c00f353494d1aec1702680
-git submodule update --init --recursive 2>/dev/null || true
+cd qemu &&  git submodule update --init  && git submodule update --init roms/edk2 && cd ../
 sed -i 's|https://github.com/Zeex/subhook.git|https://github.com/tianocore/edk2-subhook.git|g' qemu/roms/edk2/.gitmodules
-cd qemu/roms/edk2/ && git submodule update --init && cd ../../../
-echo "再次更新"
-git submodule update --init --recursive
 apt install devscripts -y
 mk-build-deps --install
 make
